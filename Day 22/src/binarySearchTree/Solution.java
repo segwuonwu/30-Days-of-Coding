@@ -1,5 +1,7 @@
 package binarySearchTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 class Node{
@@ -12,6 +14,26 @@ class Node{
 }
 
 public class Solution {
+	
+	public static void levelOrder(Node root){
+      //Write your code here
+      Queue<Node> q = new LinkedList<Node>();
+     
+      if(root != null){
+          q.add(root);
+      }
+      while(!q.isEmpty()) {
+    	  Node removeNode = q.poll();
+    	  System.out.print(removeNode.data + " ");
+    	  
+    	  if(removeNode.left != null) {
+    		  q.add(removeNode.left);
+    	  }
+    	  if(removeNode.right != null) {
+    		  q.add(removeNode.right);
+    	  }
+      }
+    }
 	
 	public static int getHeight(Node root){
       //Write your code here
@@ -53,7 +75,7 @@ public class Solution {
         }
         int height=getHeight(root);
         System.out.println("The height of the tree is: "+ height);
-        
+        levelOrder(root);
         sc.close();
     }
 
